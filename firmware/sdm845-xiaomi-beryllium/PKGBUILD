@@ -1,12 +1,12 @@
 _mode=cross
 pkgname=firmware-sdm845-xiaomi-beryllium
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 _arches=specific
 arch=(aarch64)
 license=(custom:Proprietary)
 options=(!strip)
-_commit=5a797a180ddee8edabd5e6c9d0d3566f257ec4c3
+_commit=d396d32118803235a58aab0d0bc3643256634a05
 source=(
     "git+https://gitlab.com/sdm845-mainline/firmware-xiaomi-beryllium.git#commit=${_commit}"
 )

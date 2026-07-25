@@ -1,12 +1,12 @@
 _mode=cross
 pkgname=firmware-sdm845-oneplus
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 _arches=specific
 arch=(aarch64)
 license=(custom:Proprietary)
 options=(!strip)
-_commit=176ca713448c5237a983fb1f158cf3a5c251d775
+_commit=3e31a0c3e5a061645c09f805387b49fa9d35acbf
 source=(
     "git+https://gitlab.com/sdm845-mainline/firmware-oneplus-sdm845.git#commit=${_commit}"  # branch=prepackaged-release
 )
