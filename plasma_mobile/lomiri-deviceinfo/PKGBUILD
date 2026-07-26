@@ -1,10 +1,10 @@
-# Maintainer: Devin Lin <devin@kde.org>
-# Adapted for Kupfer Linux: @comradeFreeman
+# Maintainer: Comrade Freeman <mister.siroejkin@yandex.com>
+# Contributor: Devin Lin <devin@kde.org>
 _mode=host
 _crossdirect=false
 pkgname=lomiri-deviceinfo
 pkgdesc="Library to detect and configure devices"
-pkgver=0.2.3.r0.g4423aab
+pkgver=0.2.4.r9.ge5e740a
 pkgrel=1
 _arches=specific
 arch=(
@@ -24,7 +24,7 @@ makedepends=(
     samurai
     yaml-cpp
 )
-_commit=4423aab5a9f25ac1f6baf0623c7cf7a040d254ff
+_commit=e5e740aef57983fd2a91450af18c6b2f28a1e466
 source=("git+$url.git#commit=$_commit")
 sha256sums=(SKIP)
 

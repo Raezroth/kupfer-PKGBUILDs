@@ -1,11 +1,12 @@
-# Maintainer: Danct12 <danct12@disroot.org>
+# Maintainer: Comrade Freeman <mister.siroejkin@yandex.com>
+# Contributor: Danct12 <danct12@disroot.org>
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Devin Lin <devin@kde.org>
 _mode=host
 pkgname=plasma-mobile-settings
 pkgdesc="Settings files for Plasma Mobile"
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 _arches=all
 arch=(
     x86_64
@@ -34,7 +35,7 @@ source=(
     99-flashlight.rules
 )
 sha256sums=(
-    4ca8472c70b1b7ad32bca4e68b47be84eeedbc2f53a91de16fbccb2cffc3fa1d
+    475556f42f585950b2aaa83d56b70bfbb3df419ff716ac6dccbcd40f82717096
     5f693e248b58d79f08f0aa30b2716938305e3b7d528bebca3d9428a907c534bf
     8f6315e12b5cf2bf84f1440d407d904f4fc4db831b77732bc2ef7a982cc76aad
     a8ba8eb604185b184e46d2bfd43df12f239295dd7bfe9e6711e0e0d238b40a3b

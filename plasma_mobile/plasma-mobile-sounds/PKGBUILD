@@ -1,8 +1,9 @@
-# Maintainer: Danct12 <danct12@disroot.org>
+# Maintainer: Comrade Freeman <mister.siroejkin@yandex.com>
+# Contributor: Danct12 <danct12@disroot.org>
 _mode=host
 pkgname=plasma-mobile-sounds
 pkgdesc="Sound Theme for Plasma Mobile by KDE"
-pkgver=0.1.r12.gada709b
+pkgver=0.1.r15.g2237165
 pkgrel=1
 _arches=all
 arch=(
@@ -18,7 +19,7 @@ makedepends=(
     cmake
     extra-cmake-modules
 )
-_commit=ada709b6ae66f8ef679ec85cf259401a53d18929
+_commit=223716588b8e0d8e6bb22ec9aee231e15b4103bd
 source=(
     "git+https://invent.kde.org/plasma-mobile/plasma-mobile-sounds.git#commit=$_commit"
 )

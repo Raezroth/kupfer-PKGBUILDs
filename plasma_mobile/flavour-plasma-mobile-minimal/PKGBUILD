@@ -1,8 +1,9 @@
+# Maintainer: Comrade Freeman <mister.siroejkin@yandex.com>
 # Contributor: Devin Lin <devin@kde.org>
 _mode=cross
 pkgname=flavour-plasma-mobile-minimal
 pkgdesc="Kupfer flavour: The Qt-based Plasma Mobile desktop environment (minimal edition)"
-pkgver=6.6
+pkgver=6.7
 pkgrel=1
 _arches=all
 arch=(
@@ -24,15 +25,30 @@ depends=(
     polkit
     polkit-kde-agent
     polkit-qt6
+    feedbackd
+    iio-sensor-proxy
+    packagekit-qt6
 )
-
+optdepends=(
+    "waydroid: Android app execution environment"
+    "noto-fonts-emoji: System-wide emoji support for UI"
+)
 source=(
     plasma-mobile.lst
+    plasma-mobile.service
+    delay.conf
 )
 sha256sums=(
     97b49e8c1da4ce13194b04fa2a5367d9a50c5ffe33e40dc176d3fc9a569f5525
+    8a95ca2e38b210f1842c41faec3f910edbd7c3f62b8f11b57a67605bd1b3d489
+    971a21b63ebeaec284ed0709367114a4be43ba42ee8c904326a401875f8d80d8
 )
 
 package() {
-    install -Dm644 "$srcdir"/plasma-mobile.lst "$pkgdir"/etc/kupfer/systemd/plasma-mobile.lst
+    install -Dm644 "$srcdir"/plasma-mobile.lst     "$pkgdir"/etc/kupfer/systemd/plasma-mobile.lst
+    install -Dm644 "$srcdir"/plasma-mobile.service "$pkgdir"/usr/lib/systemd/system/plasma-mobile.service
+
+    # Ugly, but ¯\_(ツ)_/¯
+    # We need to add some delay (< 3 seconds) before starting plasma for DSP to init accelerometer
+    install -Dm644 "$srcdir"/delay.conf "$pkgdir"/usr/lib/systemd/user/plasma-kwin_wayland.service.d/delay.conf
 }

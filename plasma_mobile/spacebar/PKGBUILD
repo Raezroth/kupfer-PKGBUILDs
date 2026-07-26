@@ -1,4 +1,5 @@
-# Maintainer: Danct12 <danct12@disroot.org>
+# Maintainer: Comrade Freeman <mister.siroejkin@yandex.com>
+# Contributor: Danct12 <danct12@disroot.org>
 # Contributor: Bernhard Landauer <bernhard@manjaro.org>
 # Contributor: dodgejcr@gmail.com
 # Contributor: Bhushan Shah <bhush94 at gmail dot com>
@@ -7,7 +8,7 @@ _mode=host
 _crossdirect=false
 pkgname=spacebar
 pkgdesc="SMS and messaging application for Mobile Devices running Plasma"
-pkgver=6.6.2.r0.g2b0482c
+pkgver=6.7.3.r0.g3d0fd69
 pkgrel=1
 _arches=all
 arch=(
@@ -39,7 +40,7 @@ makedepends=(
     cmake
     extra-cmake-modules
 )
-_commit=2b0482c41922193b218615b6ab649f44535f28ef
+_commit=3d0fd69db9ade1486dfefce50e21b390403048c7
 source=(
     "git+https://invent.kde.org/plasma-mobile/spacebar.git#commit=$_commit"
 )

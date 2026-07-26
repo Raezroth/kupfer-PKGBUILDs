@@ -1,4 +1,5 @@
-# Maintainer: Danct12 <danct12@disroot.org>
+# Maintainer: Comrade Freeman <mister.siroejkin@yandex.com>
+# Contributor: Danct12 <danct12@disroot.org>
 # Contributor: dodgejcr@gmail.com
 # Contributor: Bhushan Shah <bhush94 at gmail dot com>
 # Contributor: Devin Lin <devin@kde.org>
@@ -6,7 +7,7 @@ _mode=host
 _crossdirect=false
 pkgname=plasma-phonebook
 pkgdesc="Phonebook application for Mobile Devices running Plasma"
-pkgver=24.02.0.r114.g4d136ef
+pkgver=26.04.3.r0.g8005f81
 pkgrel=1
 _arches=all
 arch=(
@@ -32,7 +33,7 @@ makedepends=(
     kdoctools
     git
 )
-_commit=4d136efe9fc6400ad567a8f98da6db22a703b7cf
+_commit=8005f81ed1f29010681e8af7a463b0db2697d63d
 source=(
     "git+https://invent.kde.org/plasma-mobile/plasma-phonebook.git#commit=$_commit"
 )

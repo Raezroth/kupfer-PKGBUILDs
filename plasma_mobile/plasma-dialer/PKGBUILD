@@ -1,4 +1,5 @@
-# Maintainer: Danct12 <danct12@disroot.org>
+# Maintainer: Comrade Freeman <mister.siroejkin@yandex.com>
+# Contributor: Danct12 <danct12@disroot.org>
 # Contributor: Furkan Kardame <tech@fkardame.com>
 # Contributor: Bhushan Shah <bhush94 at gmail dot com>
 # Contributor: Devin Lin <devin@kde.org>
@@ -6,7 +7,7 @@ _mode=host
 _crossdirect=false
 pkgname=plasma-dialer
 pkgdesc="Phone Dialer for Plasma Mobile"
-pkgver=6.6.2.r0.g5589fe4
+pkgver=6.7.3.r0.g8619c88
 pkgrel=1
 _arches=all
 arch=(
@@ -39,7 +40,7 @@ makedepends=(
     extra-cmake-modules
     kdoctools
 )
-_commit=5589fe474031414dee9f14691dcc5d1c86c77907
+_commit=8619c88550b18be27136c141884458e8d66ab24c
 source=(
     "git+https://invent.kde.org/plasma-mobile/plasma-dialer.git#commit=$_commit"
 )
