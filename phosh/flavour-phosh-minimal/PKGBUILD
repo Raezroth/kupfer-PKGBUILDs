@@ -12,6 +12,7 @@ arch=(
 )
 license=(GPL)
 depends=(
+    wlroots0.20-kupfer
     phosh
     meta-gnome-minimal-common
     gnome-calls

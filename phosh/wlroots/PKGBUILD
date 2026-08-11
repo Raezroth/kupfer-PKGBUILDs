@@ -1,0 +1,78 @@
+# Maintainer: Robin Candau <antiz@archlinux.org>
+_mode=host
+_crossdirect=true
+_pkgname=wlroots0.20
+pkgname="${_pkgname}-kupfer"
+pkgdesc="Modular Wayland compositor library"
+pkgver=0.20.2
+pkgrel=1
+_arches=all
+arch=(
+    x86_64
+    aarch64
+)
+license=(MIT)
+url="https://gitlab.freedesktop.org/wlroots/wlroots"
+provides=(
+    "$_pkgname"
+    "libwlroots-${pkgver%.*}.so"
+)
+conflicts=($_pkgname)
+depends=(
+    glibc
+    libdisplay-info.so
+    libdrm
+    libglvnd
+    libinput
+    liblcms2.so
+    libliftoff.so
+    libpixman-1.so
+    libseat.so
+    libudev.so
+    libvulkan.so
+    libwayland-client.so
+    libwayland-server.so
+    libxcb
+    libxkbcommon.so
+    wayland-protocols
+    opengl-driver
+    xcb-util-errors
+    xcb-util-renderutil
+    xcb-util-wm
+)
+makedepends=(
+    git
+    glslang
+    meson
+    ninja
+    systemd
+    vulkan-headers
+    xorg-xwayland
+)
+optdepends=(
+    "xorg-xwayland: Xwayland support"
+    "vulkan-validation-layers: validation layers for the experimental vulkan renderer backend"
+)
+source=(
+    "${_pkgname}::git+${url}.git#tag=${pkgver}?signed"
+    0001-Revert-layer-shell-error-on-0-dimension-without-anch.patch
+)
+sha256sums=(
+    "6c8595da579a8df74bc307294c2485e90f5379b84390381f500da33ff3f276d2"
+    "db17fba374893d7e00c283dfdaad7abc61170782775c411ab1c79821440ff0a1"
+)
+
+prepare() {
+    cd "$_pkgname"
+    patch -p1 -N < ../0001-Revert-layer-shell-error-on-0-dimension-without-anch.patch || true
+}
+
+build() {
+    arch-meson "${_pkgname}" build
+    ninja -C build
+}
+
+package() {
+    DESTDIR="${pkgdir}" ninja -C build install
+    install -Dm 644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+}
