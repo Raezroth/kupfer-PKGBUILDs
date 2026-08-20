@@ -28,21 +28,29 @@ fi
 
 dir=$(mktemp -d)
 
-cat /boot/Image.gz "/boot/dtbs/$deviceinfo_dtb.dtb" >"$dir/Image.gz-dtb"
-
 echo "Generating new aboot.img with initramfs $initramfs_file"
 
-mkbootimg \
-  --kernel "$dir/Image.gz-dtb" \
-  --ramdisk "$initramfs_file" \
-  --base "$deviceinfo_flash_offset_base" \
-  --second_offset "$deviceinfo_flash_offset_second" \
-  --kernel_offset "$deviceinfo_flash_offset_kernel" \
-  --ramdisk_offset "$deviceinfo_flash_offset_ramdisk" \
-  --tags_offset "$deviceinfo_flash_offset_tags" \
-  --pagesize "$deviceinfo_flash_pagesize" \
-  --cmdline "kupfer earlymodules=${deviceinfo_modules_initfs// /,} console=tty0 $deviceinfo_kernel_cmdline" \
+MKBOOTIMG_ARGS=(
+  --header_version "${deviceinfo_header_version:-0}"
+  --ramdisk "$initramfs_file"
+  --base "$deviceinfo_flash_offset_base"
+  --second_offset "$deviceinfo_flash_offset_second"
+  --kernel_offset "$deviceinfo_flash_offset_kernel"
+  --ramdisk_offset "$deviceinfo_flash_offset_ramdisk"
+  --tags_offset "$deviceinfo_flash_offset_tags"
+  --pagesize "$deviceinfo_flash_pagesize"
+  --cmdline "kupfer earlymodules=${deviceinfo_modules_initfs// /,} console=tty0 $deviceinfo_kernel_cmdline"
   -o /boot/aboot.img
+)
+
+if [ "${deviceinfo_header_version:-0}" -ge 2 ]; then
+  HEADER_DEPENDENT_ARGS=(--kernel "/boot/Image.gz" --dtb_offset "$deviceinfo_flash_offset_dtb" --dtb "/boot/dtbs/$deviceinfo_dtb.dtb")
+else
+  cat /boot/Image.gz "/boot/dtbs/$deviceinfo_dtb.dtb" >"$dir/Image.gz-dtb"
+  HEADER_DEPENDENT_ARGS=(--kernel "$dir/Image.gz-dtb")
+fi
+
+mkbootimg "${MKBOOTIMG_ARGS[@]}" "${HEADER_DEPENDENT_ARGS[@]}"
 
 qhypstub_offset="508KiB"
 qhypstub_size="4KiB"
