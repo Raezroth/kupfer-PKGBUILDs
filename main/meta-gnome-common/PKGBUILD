@@ -3,7 +3,7 @@ _nodeps=true
 pkgname=meta-gnome-common
 pkgdesc="Common metapackage for the GNOME shell"
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 _arches=all
 arch=(
     x86_64
@@ -21,7 +21,7 @@ depends=(
     firefox-libinput-config
     firefox-wayland-config
     gnome-backgrounds
-    gnome-books
+    foliate
     gnome-calculator
     gnome-calendar
     gnome-characters
@@ -48,7 +48,6 @@ depends=(
     gvfs-afc
     gvfs-dnssd
     gvfs-goa
-    gvfs-google
     gvfs-gphoto2
     gvfs-mtp
     gvfs-nfs
@@ -68,7 +67,7 @@ depends=(
     sushi
     tecla
     totem
-    tracker3-miners
+    localsearch
     xdg-desktop-portal-gnome
     xdg-user-dirs-gtk
     yelp
