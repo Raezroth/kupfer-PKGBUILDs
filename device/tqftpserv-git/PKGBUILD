@@ -3,7 +3,7 @@ _crossdirect=false
 _pkgname=tqftpserv
 pkgname="$_pkgname-git"
 pkgdesc="Trivial File Transfer Protocol server over AF_QIPCRTR"
-pkgver=1.0.r37.g9fc5fdc
+pkgver=1.2.r0.gb6bb92d
 pkgrel=1
 _arches=specific
 arch=(aarch64)
@@ -13,10 +13,10 @@ provides=("$_pkgname")
 makedepends=(
     git
     meson
-    "qrtr-git>=1.1"
+    qrtr-git
     zstd
 )
-_commit=9fc5fdc53b5bc3e8ffc0b8f285443e8d1917c5cb
+_commit=b6bb92d40cfffe28621abcf7bfaa6d99beea46cb
 source=("git+$url#commit=$_commit")
 sha256sums=(SKIP)
 

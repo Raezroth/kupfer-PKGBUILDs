@@ -5,9 +5,10 @@ After=rmtfs.service
 Before=ModemManager.service
 
 [Service]
-Type=oneshot
+Type=notify
 ExecStart=/usr/bin/msm-modem-uim-selection.sh
 
 
 [Install]
 WantedBy=multi-user.target
+RequiredBy=ModemManager.service
