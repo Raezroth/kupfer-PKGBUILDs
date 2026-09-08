@@ -34,6 +34,9 @@ deviceinfo_usb_rndis_function="rndis.usb0"
 deviceinfo_usb_mass_storage_function="mass_storage.0"
 
 setup_usb_tethering_configfs() {
+  # Prevent possible race conditions in systemd or if this module is configured as =m
+  modprobe libcomposite 2>/dev/null || true
+
   CONFIGFS=/sys/kernel/config/usb_gadget/
 
   if ! [ -e "$CONFIGFS" ]; then
