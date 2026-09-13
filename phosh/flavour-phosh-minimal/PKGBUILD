@@ -3,7 +3,7 @@ _nodeps=true
 pkgname=flavour-phosh-minimal
 pkgdesc="Kupfer flavour: The gtk-based Phosh (Phone Shell) environment (minimal edition)"
 pkgver=0.1
-pkgrel=9
+pkgrel=10
 _arches=all
 arch=(
     x86_64
