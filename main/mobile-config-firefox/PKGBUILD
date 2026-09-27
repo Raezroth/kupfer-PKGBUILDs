@@ -1,8 +1,8 @@
 _mode=host
 pkgname=mobile-config-firefox
 pkgdesc="Firefox tweaks for mobile and privacy"
-pkgver=4.6.0.r0.g1c09ac8
-pkgrel=2
+pkgver=5.4.1.r0.ga07a58f
+pkgrel=1
 _arches=specific
 arch=(
     any
@@ -12,12 +12,12 @@ url=https://gitlab.postmarketos.org/postmarketOS/mobile-config-firefox
 provides=(firefox-mobile-config)
 conflicts=(firefox-mobile-config)
 replaces=(firefox-mobile-config)
-_commit=1c09ac885e7e5ebc5f40270b99f8f3b8d56823af
+_commit=a07a58fe210652d45f9c8fe8d2a514d55f48ac9d
 source=(
     "git+https://gitlab.postmarketos.org/postmarketOS/mobile-config-firefox.git#commit=$_commit"
 )
 sha256sums=(
-    SKIP
+    4db4475e0264772fa0d0026942da4bee628cdbb7d465bb82c6c52d9d3aa90cec
 )
 
 pkgver() {
@@ -25,14 +25,8 @@ pkgver() {
     git describe --long --tags --abbrev=7 "$_commit" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-    cd $pkgname
-
-    make
-}
 
 package() {
     cd $pkgname
-
     make DESTDIR="$pkgdir" install
 }
