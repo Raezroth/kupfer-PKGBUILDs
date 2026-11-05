@@ -1,0 +1,41 @@
+# Maintainer: David Runge <dvzrv@archlinux.org>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+
+pkgname=alsa-ucm-conf
+pkgver=1.2.16.1
+pkgrel=1.1
+pkgdesc="ALSA Use Case Manager configuration (and topologies)"
+arch=(any)
+url="https://alsa-project.org/"
+license=(BSD-3-Clause)
+provides=('alsa-ucm-pinephonepro')
+conflicts=('alsa-ucm-pinephonepro')
+source=(
+  $url/files/pub/lib/$pkgname-$pkgver.tar.bz2{,.sig}
+  0001-PinePhone-Use-postmarketOS-UCM-configs.patch
+  0002-RK817-Correct-Playback-Property.patch
+)
+sha512sums=('df25a29afc3b87347fa89f3fe60ebda68068acdaf68e081b58455ebee319c21e82af4076ba1f10781ba620a9e8efa6e65db27c5989d63a429d44a715dbd1d460'
+            'SKIP'
+            'c66e6091ca2a43f889b1c7fd5cee9acdc653da38a246d337f58b991171e70211d366b7b5ce5704bb09ef64d9837901d65c84f9e70aee652840373cbfb82c5518'
+            '7854cdba7ecc49649f99f81835769e4c3af148dfb7cf0a3070f670e493fb9c00568e12f5c23268d58361a6fbb2daf61206807921372737673f4dc300f907c5ab')
+b2sums=('753e1775cd99c0f6289507d04760c7a87ead4a0d029a817aa3e6083a30eae123859a91432511f1e5f4daa25ddee960e8f3be130586a2761ee95bf4af40a76a13'
+        'SKIP'
+        '46fb42bed7db7377602fa57c2fe2b450cb7276963df8f42fa2b04dde6d25e9a33e35487b11d48d19f62e9682a1e2775196c53f83e902ac03eb921b1fd48ded4d'
+        '33da2beb8845b34244490a9e6297c98ce1da7bfde830c90dd9f9da8ca93b0465257c585b1998d00b2db386b86d1a510955de73f471d149580a97ed4dfd265db9')
+validpgpkeys=('F04DF50737AC1A884C4B3D718380596DA6E59C91') # ALSA Release Team (Package Signing Key v1) <release@alsa-project.org>
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -p1 < ../0001-PinePhone-Use-postmarketOS-UCM-configs.patch
+  patch -p1 < ../0002-RK817-Correct-Playback-Property.patch
+}
+
+package() {
+  cd $pkgname-$pkgver
+  install -vdm 755 "$pkgdir/usr/share/alsa/"
+  cp -av ucm2 "$pkgdir/usr/share/alsa/"
+  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -vDm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -vDm 644 ucm2/README.md -t "$pkgdir/usr/share/doc/$pkgname/ucm2"
+}

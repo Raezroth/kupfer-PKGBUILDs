@@ -1,0 +1,26 @@
+diff --git a/scripts/core/sxmo_mmsdconfig.sh b/scripts/core/sxmo_mmsdconfig.sh
+index b923c78..aca012e 100755
+--- a/scripts/core/sxmo_mmsdconfig.sh
++++ b/scripts/core/sxmo_mmsdconfig.sh
+@@ -7,6 +7,8 @@
+ # shellcheck source=scripts/core/sxmo_common.sh
+ . sxmo_common.sh
+ 
++alias superctl="systemctl --user"
++
+ set -e
+ 
+ MMS_BASE_DIR="${SXMO_MMS_BASE_DIR:-"$HOME"/.mms/modemmanager}"
+diff --git a/scripts/core/sxmo_vvmdconfig.sh b/scripts/core/sxmo_vvmdconfig.sh
+index 6cfab48..b82d08a 100755
+--- a/scripts/core/sxmo_vvmdconfig.sh
++++ b/scripts/core/sxmo_vvmdconfig.sh
+@@ -7,6 +7,8 @@
+ # shellcheck source=scripts/core/sxmo_common.sh
+ . sxmo_common.sh
+ 
++alias superctl="systemctl --user"
++
+ set -e
+ 
+ VVM_BASE_DIR="${SXMO_VVM_BASE_DIR:-"$HOME"/.vvm/modemmanager}"

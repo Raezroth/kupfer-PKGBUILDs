@@ -1,0 +1,22 @@
+# Maintainer: dni <office@dnilabs.com>
+pkgname=clickclack
+pkgver=0.2.3
+pkgrel=1
+pkgdesc="Haptic/audio feedback daemon for virtual keyboards like svkbd"
+url="https://git.sr.ht/~proycon/clickclack"
+arch=('x86_64' 'armv7h' 'aarch64')
+license=('MIT')
+depends=('sdl2')
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~proycon/clickclack/archive/$pkgver.tar.gz")
+
+build() {
+  cd "$pkgname-$pkgver"
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+}
+
+sha512sums=('fa45400fbae77eb75f659be25aa9f364eb3a841fe9cd1e4db96f573ec1689f215a2396b4888e675d725f25b3242e34bf477294373c9066184c09599b93deb23f')
